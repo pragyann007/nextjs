@@ -1,13 +1,22 @@
-import { NextResponse } from "next/server";
-export async function GET() {
-    return NextResponse.json({
-        "name":"Pragyan",
-        "age":"19",
-        "isSkilled":true
-    })
-}
+import { NextRequest } from "next/server";
 
-async function POST() {
+
+export async function POST(Request:NextRequest){
+    const body =await Request.json();
+    const {courseId,course,author,duration} = body;
     
-    
+
+    const response = {
+        status:201,
+        message:"Created",
+        data:{
+            courseId,
+            course,
+            duration,
+            author
+        }
+    }
+    return Response.json(response);
+
+
 }
